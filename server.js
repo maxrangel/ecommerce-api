@@ -13,6 +13,10 @@ dotenv.config({ path: './config.env' });
 
 initModels();
 
+db.authenticate()
+	.then(() => console.log('DB authenticated'))
+	.catch(err => console.log(err));
+
 db.sync()
 	.then(() => {
 		console.log('Database connected');

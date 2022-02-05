@@ -1,12 +1,13 @@
-exports.renderIndex = (req, res, next) => {
-	const users = [
-		{ name: 'Max', age: 23 },
-		{ name: 'John', age: 25 },
-		{ name: 'Chris', age: 21 },
-	];
+const path = require('path');
 
-	res.status(200).render('welcome.pug', {
-		message: 'Hello from NodeJS',
-		users,
-	});
+exports.renderIndex = (req, res, next) => {
+	const indexPath = path.resolve(
+		__dirname,
+		'..',
+		'client',
+		'build',
+		'index.html'
+	);
+
+	res.status(200).sendFile(indexPath);
 };
